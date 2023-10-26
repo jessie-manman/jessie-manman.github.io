@@ -1,2 +1,21 @@
 hello
 这是我的第一篇blog
+序号	功能模块	具体功能	adb命令	备注
+1	1、常用命令	查看adb的版本	adb version	
+2		启动adb	adb start-server	
+3		停止adb	adb kill-server	
+4		以 root 权限运行 adb	adb root	
+5		指定 adb server 的网络端口	adb -P <port> start-server	ADB的默认端口为 5037
+6		查询已连接的设备/模拟器列表	adb devices	
+7	2、设备连接	USB连接		
+8		WLAN连接	adb connect <device-ip-address>	
+9	3、应用管理	查看所有应用	adb shell pm list packages	
+10		查看应用列表	adb shell pm list packages [-f] [-d] [-e] [-s] [-3] [-i] [-u] [--user USER_ID] [FILTER]	见《Sheet2》第一点 参数解释
+11		查看系统应用	adb shell pm list packages -s	
+12		查看第三方应用	adb shell pm list packages -3	
+13		包名包含某字符串的应用	adb shell pm list packages huawei	
+14		安装应用	adb install [-l] [-r] [-t] [-s] [-d] [-g] <apk-file>	见《Sheet2》第二点 安装失败解决办法
+		卸载应用	adb uninstall [-k] <package-name>	<package-name> 表示应用的包名，-k 参数可选，表示卸载应用但保留数据和缓存目录。
+		清除应用数据与缓存	adb shell pm clear <package-name>	
+		查看前台 Activity	adb shell dumpsys activity activities | grep mFocusedActivity	
+		查看正在运行的 Services	adb shell dumpsys activity services [<package-name>]	
